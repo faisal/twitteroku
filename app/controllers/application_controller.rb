@@ -18,7 +18,13 @@ class ApplicationController < ActionController::Base
       # Apigee then Apigee will create a APIGEE_TWITTER_API_ENDPOINT environment
       # variable, which we sould use. For local testing, declare that variable yourself
       # based on what the Apigee plugin assigned on Heroku.
-      @oauth ||= Twitter::OAuth.new(ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET'])
+      if !ENV['APIGEE_TWITTER_API_ENDPOINT'].nil?
+        api_endpoint = 'http://' + ENV['APIGEE_TWITTER_API_ENDPOINT']
+      else
+        api_endpoint = nil
+      end
+
+      @oauth ||= Twitter::OAuth.new(ENV['CONSUMER_KEY'], ENV['CONSUMER_SECRET'], :api_endpoint => api_endpoint)
     end
 
     def twitter_client
