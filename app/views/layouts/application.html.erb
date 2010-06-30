@@ -1,0 +1,22 @@
+<html>
+<head>
+<title>Twitteroku</title>
+</head>
+<% if session[:screen_name] %>
+  Hello, @<%= session[:screen_name] %>
+<% end %>
+
+<p>[<a href="/users/">User Info</a>] |
+  [<a href="/users/timeline">Your Timeline</a>] |
+  [<a href="/tweets/new">New Tweet</a>]</p>
+
+<% if flash[:error] %>
+  <p id="flash_error"><%= flash[:error] %></p>
+<% elsif flash[:notice]%>
+  <p id="flash_notice"><%= flash[:notice] %></p>
+<% end %>
+
+<%= @content_for_layout %>
+
+</body>
+</html>
