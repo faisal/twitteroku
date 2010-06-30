@@ -3,3 +3,11 @@
   @<a href="http://www.twitter.com/<%= @result['screen_name'] %>"><%= @result['screen_name'] %></a>
   <%= @result['name'] %>)</p>
 <p><%= debug @result %></p>
+
+<table>
+  <tr><td>Who</td><td>What</td></tr>
+  <% Twitter::Search.new('@'+params[:name]).each do |r| %><tr>
+    <td>@<a href="http://www.twitter.com/<%= r['from_user'] %>"><%= r['from_user'] %></a></td>
+    <td><%= r['text'] %></td>
+  </tr><% end %>
+</table>
