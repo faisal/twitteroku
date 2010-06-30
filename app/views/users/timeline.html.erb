@@ -1,0 +1,8 @@
+Timeline for @<%= session[:screen_name] %>:
+<table>
+  <tr><td>Who</td><td>What</td></tr>
+  <% @timeline.each do |tweet| %><tr>
+    <td>@<a href="http://www.twitter.com/<%= tweet['user']['screen_name'] %>"><%= tweet['user']['screen_name'] %></a></td>
+    <td><%= tweet['text'] %></td>
+  </tr><% end %>
+</table>
