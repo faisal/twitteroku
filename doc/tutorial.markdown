@@ -16,7 +16,7 @@ This tutorial assumes you're already comfortable with Rails, and familiar with H
 7. Using Apigee
 8. Other Notes and Resources
 
-## 1. Setup
+## 1. Setup [#](http://github.com/faisal/twitteroku/commit/0de1b837671c8e42e6cea716274d97b5a925af33)
 
 We'll use Heroku's [Bamboo](http://docs.heroku.com/bamboo) stack, which lets you use Rails 2.3.8 and [John Nunemaker](http://addictedtonew.com/)'s [Twitter gem](http://twitter.rubyforge.org/). There are a number of Twitter gems, but this one is fairly popular and works well on Heroku.
 
@@ -46,7 +46,7 @@ Finally, commit the app and push it to Heroku:
 
 Now you're ready to get something working. From now on, we won't mention when to push to Heroku, so remember to <code>git push heroku master</code> when you want to see changes online.
 
-## 2. Querying User Info
+## 2. Querying User Info [#](http://github.com/faisal/twitteroku/commit/79abb825a7d428d6277c67c043595276272169b6)
 
 Querying public information doesn't require authentication, so we'll start by asking Twitter about a user.
 
@@ -82,7 +82,7 @@ The <code>debug</code> block shows you the structure of what was returned, and t
 
 Your app should now let you enter a user's screen name and get back their publicly listed information. Visit http://0.0.0.0:3000/user and enter 'heroku' to see what Twitter knows about @heroku.
 
-## 3. Searching Twitter
+## 3. Searching Twitter [#](http://github.com/faisal/twitteroku/commit/4406648b79a29206b19a5359fc821a8a8e0b6f4d)
 
 Now let's search Twitter for all recent public tweets by or mentioning a specific user. This is similar to doing a search on the Twitter site, but it's available in your application.
 
@@ -162,7 +162,7 @@ If you've set the environment variables locally and are using the same Twitter a
 
     $ heroku config:add CONSUMER_KEY=$CONSUMER_KEY CONSUMER_SECRET=$CONSUMER_SECRET
 
-## 6. Posting
+## 6. Posting [#](http://github.com/faisal/twitteroku/commit/2f74ba43e6e02a7ad118667e404e5cc071d15d20)
 
 Now let's make a controller to make our first post.
 
@@ -314,7 +314,7 @@ To see how it all ties together, consider what happens if you go to [/tweets/new
 - <code>SessionsController#create</code> gets a new Request Token from Twitter, then redirects the browser to Twitter so the user can authorize the request.
 - When the user authorizes the request, Twitter redirects the browser back to <code>/sessions/write</code>, which stores the Access Token and redirects to the page that started this process
 
-### Doing Things While Authenticated.
+### Doing Things While Authenticated [#](http://github.com/faisal/twitteroku/commit/4be975b0ef31b80d60d343ca9de45621852a0e2b)
 
 Now let's look at what happens if you post from [/tweets/new](http://0.0.0.0:3000/tweets/new) after the first time:
 
@@ -359,7 +359,7 @@ Once your app is authenticated, you can use the Twitter gem to call most of the 
 
 For more info on the available APIs, see the [Twitter gem's documentation](http://rdoc.info/projects/jnunemaker/twitter)
 
-## 7. Using Apigee
+## 7. Using Apigee [#](http://github.com/faisal/twitteroku/commit/85064604f2e64df85ea585135e63221818838e8f)
 
 [Apigee](http://www.apigee.com) is a third-party service that give you API testing, debugging and analytics for your API use.  By using Apigee, you also get to bypass Twitter's [rate limits](http://apiwiki.twitter.com/Rate-limiting), which makes your app more scalable.
 
@@ -419,7 +419,7 @@ This demo app did not store any user data locally, and used cookie-based session
 
 - This application uses Twitter for authentication and authorization, but after login the authorization is only checked when the user makes a request of Twitter. If your application includes actions that don't talk to Twitter then you need to handle situations where the user's Twitter authorization has changed but your application hasn't received that information.
 
-### More resources
+### More Resources
 
 - For more information about OAuth, see the [About OAuth](http://oauth.net/about/) page, and Eran Hammer-Lahav's [Explaining OAuth](http://hueniverse.com/oauth/)
 - [John Nunemaker](http://railstips.org/) has a richer and more fully-featured [demo app](http://github.com/jnunemaker/twitter-app).
